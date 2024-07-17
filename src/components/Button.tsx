@@ -1,23 +1,23 @@
 import { cn } from "@/utils/cn";
 import React from "react";
 
-type buttonType = "primary" | "secondary" | "outline";
+type variants = "primary" | "secondary" | "outline";
 
 interface IButtonProps {
-  type: buttonType;
+  variant: variants;
   children: React.ReactNode;
   classNames?: string;
   onClick?: () => void;
 }
 
-const buttonStyles: Record<buttonType, string> = {
+const buttonStyles: Record<variants, string> = {
   primary: "bg-primary text-secondary",
   secondary: "bg-secondary text-tertiary",
   outline: "border border-secondary text-secondary",
 };
 
 export default function Button({
-  type,
+  variant,
   children,
   classNames,
   onClick,
@@ -25,7 +25,7 @@ export default function Button({
   return (
     <button
       className={cn(
-        buttonStyles[type],
+        buttonStyles[variant],
         "cursor-pointer rounded-xl px-8 py-4",
         classNames
       )}
