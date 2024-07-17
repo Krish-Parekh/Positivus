@@ -5,5 +5,5 @@ interface IWidthWrapperProps {
 }
 
 export default function WidthWrapper({ children }: IWidthWrapperProps) {
-  return <div className="w-screen mx-auto md:max-w-6xl">{children}</div>;
+  return <div className="mx-auto w-screen md:max-w-7xl">{children}</div>;
 }

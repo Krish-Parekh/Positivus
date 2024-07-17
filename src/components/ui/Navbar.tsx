@@ -71,7 +71,7 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="mx-4 flex items-center justify-between p-6">
+    <nav className="mx-4 flex items-center justify-between p-4">
       <motion.div
         variants={navLinksVariants}
         initial="hidden"
