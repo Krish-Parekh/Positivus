@@ -7,7 +7,7 @@ import { RiMenu5Fill } from "react-icons/ri";
 import Typography from "@/components/Typography";
 import CompanyIcon from "@/assets/CompanyIcon.png";
 import Button from "@/components/Button";
-import { motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
 const imageVariants: Variants = {
   hover: {
@@ -46,8 +46,9 @@ const navItemVariants: Variants = {
 };
 
 export default function Navbar() {
+  const [showMenu, setShowMenu] = React.useState(false);
   return (
-    <nav className="mx-4 flex items-center justify-between p-6 debug">
+    <nav className="mx-4 flex items-center justify-between p-6">
       <motion.div
         variants={navLinksVariants}
         initial="hidden"
@@ -63,13 +64,38 @@ export default function Navbar() {
         </motion.div>
         <Typography variant={3}>Positivus</Typography>
       </motion.div>
+      <AnimatePresence>
+        {showMenu && (
+          <motion.ul
+            variants={navLinksVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="absolute right-4 top-20 flex flex-col gap-y-4 rounded-xl bg-white p-4 shadow-md"
+          >
+            {navItems.map((item) => (
+              <motion.li key={item.id} variants={navItemVariants}>
+                <Typography variant={6}>{item.title}</Typography>
+              </motion.li>
+            ))}
+            <motion.li variants={navItemVariants}>
+              <Button variant="outline" classNames="px-4 py-2">
+                Request a quote
+              </Button>
+            </motion.li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
       <div className="flex items-center">
-        <RiMenu5Fill className="block h-7 w-7 cursor-pointer md:hidden" />
+        <RiMenu5Fill
+          className="block h-7 w-7 cursor-pointer md:hidden"
+          onClick={() => setShowMenu(!showMenu)}
+        />
         <motion.ul
           variants={navLinksVariants}
           initial="hidden"
           animate="visible"
-          className="hidden items-center cursor-pointer gap-x-10 md:flex"
+          className="hidden cursor-pointer items-center gap-x-10 md:flex"
         >
           {navItems.map((item) => (
             <motion.li key={item.id} variants={navItemVariants}>
