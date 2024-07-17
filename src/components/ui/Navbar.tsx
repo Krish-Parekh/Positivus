@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import { navItems } from "@/constants/data";
 import { RiMenu5Fill } from "react-icons/ri";
@@ -46,52 +46,29 @@ const navItemVariants: Variants = {
 };
 
 export default function Navbar() {
-  const [showMenu, setShowMenu] = React.useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
-  const renderMenu = useMemo(() => {
-    return (
-      <motion.ul
-        variants={navLinksVariants}
-        initial="hidden"
-        animate="visible"
-        className="hidden cursor-pointer items-center gap-x-10 md:flex"
-      >
+  const renderMenuItems = useCallback(
+    () => (
+      <>
         {navItems.map((item) => (
           <motion.li key={item.id} variants={navItemVariants}>
             <Typography variant={6}>{item.title}</Typography>
           </motion.li>
         ))}
         <motion.li variants={navItemVariants}>
-          <Button variant="outline" classNames="px-4 py-2">
+          <Button
+            variant="outline"
+            classNames="px-4 py-2 group relative overflow-hidden  transition-all"
+          >
+            <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-xl bg-black/5 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
             Request a quote
           </Button>
         </motion.li>
-      </motion.ul>
-    );
-  }, []);
-
-  const renderMobileMenu = useMemo(() => {
-    return (
-      <motion.ul
-        variants={navLinksVariants}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        className="absolute right-4 top-20 flex flex-col gap-y-4 rounded-xl bg-white p-4 shadow-md"
-      >
-        {navItems.map((item) => (
-          <motion.li key={item.id} variants={navItemVariants}>
-            <Typography variant={6}>{item.title}</Typography>
-          </motion.li>
-        ))}
-        <motion.li variants={navItemVariants}>
-          <Button variant="outline" classNames="px-4 py-2">
-            Request a quote
-          </Button>
-        </motion.li>
-      </motion.ul>
-    );
-  }, []);
+      </>
+    ),
+    []
+  );
 
   return (
     <nav className="mx-4 flex items-center justify-between p-6">
@@ -110,13 +87,32 @@ export default function Navbar() {
         </motion.div>
         <Typography variant={3}>Positivus</Typography>
       </motion.div>
-      <AnimatePresence>{showMenu && renderMobileMenu}</AnimatePresence>
+      <AnimatePresence>
+        {showMenu && (
+          <motion.ul
+            variants={navLinksVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="absolute right-4 top-20 flex flex-col gap-y-4 rounded-xl bg-white p-4 shadow-md md:hidden"
+          >
+            {renderMenuItems()}
+          </motion.ul>
+        )}
+      </AnimatePresence>
       <div className="flex items-center">
         <RiMenu5Fill
           className="block h-7 w-7 cursor-pointer md:hidden"
-          onClick={() => setShowMenu(!showMenu)}
+          onClick={() => setShowMenu((prev) => !prev)}
         />
-        {renderMenu}
+        <motion.ul
+          variants={navLinksVariants}
+          initial="hidden"
+          animate="visible"
+          className="hidden cursor-pointer items-center gap-x-10 md:flex"
+        >
+          {renderMenuItems()}
+        </motion.ul>
       </div>
     </nav>
   );
