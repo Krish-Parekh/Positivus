@@ -5,6 +5,7 @@ type variants = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 interface ITypographyProps {
   variant: variants;
   children: React.ReactNode;
+  classNames?: string;
 }
 
 const typographyStyles: Record<variants, string> = {
@@ -17,23 +18,23 @@ const typographyStyles: Record<variants, string> = {
   7: "text-sm",
 };
 
-export default function Typography({ variant, children }: ITypographyProps) {
+export default function Typography({ variant, children, classNames }: ITypographyProps) {
   switch (variant) {
     case 1:
-      return <h1 className={cn(typographyStyles[variant])}>{children}</h1>;
+      return <h1 className={cn(typographyStyles[variant], classNames)}>{children}</h1>;
     case 2:
-      return <h2 className={cn(typographyStyles[variant])}>{children}</h2>;
+      return <h2 className={cn(typographyStyles[variant], classNames)}>{children}</h2>;
     case 3:
-      return <h3 className={cn(typographyStyles[variant])}>{children}</h3>;
+      return <h3 className={cn(typographyStyles[variant], classNames)}>{children}</h3>;
     case 4:
-      return <h4 className={cn(typographyStyles[variant])}>{children}</h4>;
+      return <h4 className={cn(typographyStyles[variant], classNames)}>{children}</h4>;
     case 5:
-      return <h5 className={cn(typographyStyles[variant])}>{children}</h5>;
+      return <h5 className={cn(typographyStyles[variant], classNames)}>{children}</h5>;
     case 6:
-      return <h6 className={cn(typographyStyles[variant])}>{children}</h6>;
+      return <h6 className={cn(typographyStyles[variant], classNames)}>{children}</h6>;
     case 7:
-      return <p className={cn(typographyStyles[variant])}>{children}</p>;
+      return <p className={cn(typographyStyles[variant], classNames)}>{children}</p>;
     default:
-      return <p className={cn(typographyStyles[7])}>{children}</p>;
+      return <p className={cn(typographyStyles[7], classNames)}>{children}</p>;
   }
 }
