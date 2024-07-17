@@ -10,7 +10,7 @@ interface ITypographyProps {
 
 const typographyStyles: Record<variants, string> = {
   1: "text-4xl md:text-5xl font-bold leading-tight tracking-tight",
-  2: "text-3xl md:text-4xl font-semibold tracking-tight",
+  2: "text-2xl md:text-4xl font-semibold tracking-tight",
   3: "text-2xl md:text-3xl font-semibold tracking-tight",
   4: "text-xl font-medium",
   5: "text-lg font-medium",

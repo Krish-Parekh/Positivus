@@ -26,7 +26,7 @@ export default function Button({
     <button
       className={cn(
         buttonStyles[variant],
-        "cursor-pointer rounded-xl px-8 py-4",
+        "cursor-pointer rounded-xl",
         classNames
       )}
       onClick={onClick}

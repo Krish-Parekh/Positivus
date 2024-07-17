@@ -1,3 +1,10 @@
+import Navbar from "@/components/ui/Navbar";
+import WidthWrapper from "@/components/ui/WidthWrapper";
+
 export default function Home() {
-  return <h1>Home</h1>;
+  return (
+    <WidthWrapper>
+      <Navbar />
+    </WidthWrapper>
+  );
 }
