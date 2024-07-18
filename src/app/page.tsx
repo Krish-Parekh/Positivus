@@ -1,3 +1,4 @@
+import CaseStudiesSection from "@/components/sections/CaseStudiesSection";
 import ServiceSection from "@/components/sections/ServiceSection";
 import Hero from "@/components/ui/Hero";
 import Navbar from "@/components/ui/Navbar";
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ServiceSection />
+      <CaseStudiesSection />
     </WidthWrapper>
   );
 }

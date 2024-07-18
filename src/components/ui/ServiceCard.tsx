@@ -73,13 +73,13 @@ export default function ServiceCard({
           <motion.div variants={iconVariants} className={ICON_CLASS_NAMES}>
             <MdArrowOutward size={24} />
           </motion.div>
-          <Typography variant={6} classNames={TEXT_CLASS_NAMES}>
+          <Typography variant={6} classNames={cn(TEXT_CLASS_NAMES, "hidden md:block")}>
             Learn More
           </Typography>
         </div>
       </div>
 
-      <div className="col-start-2 col-end-3 ml-auto place-content-center">
+      <div className="col-start-2 col-end-3 ml-auto place-content-end md:place-content-center">
         <Image src={image} alt="Service Image" width={200} height={200} />
       </div>
     </motion.div>
