@@ -4,8 +4,9 @@ import React from "react";
 import Button from "@/components/Button";
 import Image from "next/image";
 import HeroImage from "@/assets/HeroIcon.png";
-import CompanyCarousel from "./CompanyCarousel";
 import { motion, Variants } from "framer-motion";
+import Carousel from "@/components/Carousel";
+import { companies } from "@/constants/data";
 
 const fadeIn: Variants = {
   hidden: { opacity: 0 },
@@ -32,7 +33,7 @@ export default function Hero() {
       className="mx-4 h-screen p-4"
     >
       <motion.div
-        className="flex flex-col h-full justify-evenly gap-16"
+        className="flex h-full flex-col justify-evenly gap-16"
         variants={fadeIn}
       >
         <div className="flex items-center justify-between gap-8">
@@ -68,7 +69,7 @@ export default function Hero() {
               </Button>
             </motion.div>
           </motion.div>
-          <motion.div className="w-full h-full" variants={childFadeIn}>
+          <motion.div className="h-full w-full" variants={childFadeIn}>
             <Image
               src={HeroImage}
               className="hidden md:flex"
@@ -79,7 +80,16 @@ export default function Hero() {
           </motion.div>
         </div>
         <motion.div variants={childFadeIn}>
-          <CompanyCarousel />
+          <Carousel>
+            {companies.map((company) => (
+              <Image
+                key={company.name}
+                src={company.image}
+                alt={company.name}
+                className="mr-20 h-fit w-fit cursor-pointer grayscale filter hover:filter-none"
+              />
+            ))}
+          </Carousel>
         </motion.div>
       </motion.div>
     </motion.main>
