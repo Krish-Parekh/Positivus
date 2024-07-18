@@ -11,10 +11,16 @@ import Image from "next/image";
 import CTABlock from "@/assets/CTABlock.png";
 
 const containerVariants: Variants = {
-  hidden: {},
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
   visible: {
+    opacity: 1,
+    y: 0,
     transition: {
       staggerChildren: 0.3,
+      ease: "easeInOut",
     },
   },
 };
@@ -65,7 +71,12 @@ export default function ServiceSection() {
         ))}
       </motion.div>
 
-      <motion.div className="relative mt-20 flex rounded-md items-center bg-tertiary p-16 shadow-lg md:flex-row">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={containerVariants}
+        className="relative mt-20 flex items-center rounded-md bg-tertiary p-8 md:p-16 shadow-lg md:flex-row"
+      >
         <motion.div className="max-w-xl space-y-4">
           <h1 className="text-2 text-3xl font-semibold leading-tight tracking-tight">
             Let’s make things happen
@@ -74,7 +85,7 @@ export default function ServiceSection() {
             Contact us today to learn more about how our digital marketing
             services can help your business grow and succeed online.
           </p>
-          <Button variant="secondary" classNames="px-4 py-4">
+          <Button variant="secondary" classNames="px-4 py-4 w-full md:w-auto">
             <span>Get your free proposal</span>
           </Button>
         </motion.div>
