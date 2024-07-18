@@ -5,8 +5,8 @@ type variants = "primary" | "secondary";
 
 interface ITitleWrapperProps {
   variant: variants;
-  children: React.ReactNode;
   classNames?: string;
+  children: React.ReactNode;
 }
 
 const titleStyles: Record<variants, string> = {

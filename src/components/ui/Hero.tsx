@@ -43,7 +43,7 @@ export default function Hero() {
               variants={childFadeIn}
             >
               <motion.h1
-                className="text-2 text-5xl font-semibold leading-tight tracking-tight"
+                className="text-secondary text-5xl font-semibold leading-tight tracking-tight"
                 variants={childFadeIn}
               >
                 Navigating the <br /> digital landscape <br /> for success
@@ -63,16 +63,15 @@ export default function Hero() {
                 media marketing, and content creation.
               </motion.p>
             </motion.div>
-            <motion.div variants={childFadeIn}>
-              <Button variant="secondary" classNames="px-4 py-4 md:self-start">
+            <motion.div className="md:self-start" variants={childFadeIn}>
+              <Button variant="secondary" classNames="px-4 py-4 w-full">
                 Book a consultation
               </Button>
             </motion.div>
           </motion.div>
-          <motion.div className="h-full w-full" variants={childFadeIn}>
+          <motion.div className="hidden md:flex h-full w-full" variants={childFadeIn}>
             <Image
               src={HeroImage}
-              className="hidden md:flex"
               alt="Hero Image"
               width={999}
               height={999}
