@@ -52,14 +52,14 @@ export default function Navbar() {
     () => (
       <>
         {navItems.map((item) => (
-          <motion.li key={item.id} variants={navItemVariants}>
+          <motion.li className="cursor-pointer" key={item.id} variants={navItemVariants}>
             <Typography variant={6}>{item.title}</Typography>
           </motion.li>
         ))}
         <motion.li variants={navItemVariants}>
           <Button
             variant="outline"
-            classNames="px-4 py-2 group relative overflow-hidden  transition-all"
+            classNames="px-4 py-2 group relative overflow-hidden transition-all"
           >
             <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-xl bg-black/5 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
             Request a quote
