@@ -6,6 +6,9 @@ import TitleWrapper from "@/components/ui/TitleWrapper";
 import Typography from "@/components/Typography";
 import ServiceCard from "@/components/ui/ServiceCard";
 import { services } from "@/constants/data";
+import Button from "../Button";
+import Image from "next/image";
+import CTABlock from "@/assets/CTABlock.png";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -23,7 +26,7 @@ const childVariants: Variants = {
 
 export default function ServiceSection() {
   return (
-    <section className="mx-4 mt-20 h-screen space-y-10 p-4">
+    <section className="mx-4 mt-20 space-y-10 p-4">
       <motion.div
         className="flex flex-col items-center gap-8 md:flex-row"
         initial="hidden"
@@ -60,6 +63,30 @@ export default function ServiceSection() {
             />
           </motion.div>
         ))}
+      </motion.div>
+
+      <motion.div className="relative mt-20 flex rounded-md items-center bg-tertiary p-16 shadow-lg md:flex-row">
+        <motion.div className="max-w-xl space-y-4">
+          <h1 className="text-2 text-3xl font-semibold leading-tight tracking-tight">
+            Let’s make things happen
+          </h1>
+          <p className="text-2 leading-7">
+            Contact us today to learn more about how our digital marketing
+            services can help your business grow and succeed online.
+          </p>
+          <Button variant="secondary" classNames="px-4 py-4">
+            <span>Get your free proposal</span>
+          </Button>
+        </motion.div>
+        <motion.div className="absolute right-10 hidden md:block md:flex-1">
+          <Image
+            src={CTABlock}
+            alt="CTA Block"
+            className="mx-auto"
+            width={350}
+            height={350}
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

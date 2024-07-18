@@ -56,14 +56,16 @@ export default function ServiceCard({
       whileHover="hover"
       className={cn(
         BACKGROUND_CLASS_NAMES,
-        "grid cursor-pointer grid-cols-2 rounded-md border border-b-[6px] border-black p-8 shadow-lg transition-all hover:scale-95"
+        "grid cursor-pointer grid-cols-2 rounded-md border border-black p-8 shadow-lg transition-all hover:scale-95 border-opacity-45"
       )}
     >
       <div className="flex flex-col gap-y-12">
         <div className="col-start-1 col-end-2 flex flex-col">
           {titles.map((title) => (
             <TitleWrapper variant={styles[variants].variant}>
-              <Typography variant={3}>{title}</Typography>
+              <Typography variant={3} classNames="text-nowrap">
+                {title}
+              </Typography>
             </TitleWrapper>
           ))}
         </div>
@@ -77,7 +79,7 @@ export default function ServiceCard({
         </div>
       </div>
 
-      <div className="col-start-2 col-end-3 ml-auto">
+      <div className="col-start-2 col-end-3 ml-auto place-content-center">
         <Image src={image} alt="Service Image" width={200} height={200} />
       </div>
     </motion.div>
