@@ -8,7 +8,7 @@ export default function Home() {
     <WidthWrapper>
       <Navbar />
       <Hero />
-      {/* <ServiceSection /> */}
+      <ServiceSection />
     </WidthWrapper>
   );
 }
