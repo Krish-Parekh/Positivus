@@ -52,7 +52,11 @@ export default function Navbar() {
     () => (
       <>
         {navItems.map((item) => (
-          <motion.li className="cursor-pointer" key={item.id} variants={navItemVariants}>
+          <motion.li
+            className="cursor-pointer"
+            key={item.id}
+            variants={navItemVariants}
+          >
             <Typography variant={6}>{item.title}</Typography>
           </motion.li>
         ))}
@@ -101,10 +105,16 @@ export default function Navbar() {
         )}
       </AnimatePresence>
       <div className="flex items-center">
-        <RiMenu5Fill
-          className="block h-7 w-7 cursor-pointer md:hidden"
-          onClick={() => setShowMenu((prev) => !prev)}
-        />
+        <motion.div
+          variants={navLinksVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <RiMenu5Fill
+            className="block h-7 w-7 cursor-pointer md:hidden"
+            onClick={() => setShowMenu((prev) => !prev)}
+          />
+        </motion.div>
         <motion.ul
           variants={navLinksVariants}
           initial="hidden"
