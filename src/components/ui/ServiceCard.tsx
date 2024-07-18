@@ -1,16 +1,13 @@
+"use client";
+import { motion, Variants } from "framer-motion";
 import { cn } from "@/utils/cn";
 import TitleWrapper from "./TitleWrapper";
 import Typography from "../Typography";
 import { MdArrowOutward } from "react-icons/md";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import { IService, variants } from "@/types/main";
 
-export type variants = "primary" | "secondary" | "tertiary";
-
-export interface IServiceCardProps {
-  title: string;
-  variants: variants;
-  image: StaticImageData;
-}
+export interface IServiceCardProps extends IService {}
 
 export interface IServiceCardStyles {
   background: string;
@@ -39,6 +36,10 @@ const styles: Record<variants, IServiceCardStyles> = {
     text: "text-secondary",
   },
 };
+const iconVariants: Variants = {
+  default: { rotate: 0 },
+  hover: { rotate: 45 },
+};
 
 export default function ServiceCard({
   title,
@@ -50,10 +51,12 @@ export default function ServiceCard({
   const ICON_CLASS_NAMES = styles[variants].icon;
   const TEXT_CLASS_NAMES = styles[variants].text;
   return (
-    <div
+    <motion.div
+      initial="default"
+      whileHover="hover"
       className={cn(
         BACKGROUND_CLASS_NAMES,
-        "grid grid-cols-2 rounded-md border border-black border-b-[6px] cursor-pointer p-8"
+        "grid cursor-pointer grid-cols-2 rounded-md border border-b-[6px] border-black p-8 shadow-lg transition-all hover:scale-95"
       )}
     >
       <div className="flex flex-col gap-y-12">
@@ -65,16 +68,18 @@ export default function ServiceCard({
           ))}
         </div>
         <div className="flex items-center gap-x-4">
-          <div className={ICON_CLASS_NAMES}>
+          <motion.div variants={iconVariants} className={ICON_CLASS_NAMES}>
             <MdArrowOutward size={24} />
-          </div>
-          <Typography variant={6} classNames={TEXT_CLASS_NAMES}>Learn More</Typography>
+          </motion.div>
+          <Typography variant={6} classNames={TEXT_CLASS_NAMES}>
+            Learn More
+          </Typography>
         </div>
       </div>
 
       <div className="col-start-2 col-end-3 ml-auto">
         <Image src={image} alt="Service Image" width={200} height={200} />
       </div>
-    </div>
+    </motion.div>
   );
 }

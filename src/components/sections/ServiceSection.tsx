@@ -7,7 +7,6 @@ import { services } from "@/constants/data";
 export default function ServiceSection() {
   return (
     <section className="mx-4 mt-20 h-screen space-y-10 p-4">
-      {/* Header Section */}
       <div className="flex flex-col items-center gap-8 md:flex-row">
         <TitleWrapper variant="primary">
           <Typography variant={2}>Services</Typography>
@@ -18,7 +17,6 @@ export default function ServiceSection() {
         </span>
       </div>
 
-      {/* Service Cards */}
       <div className="grid grid-cols-2 gap-8">
         {services.map((service) => (
           <ServiceCard

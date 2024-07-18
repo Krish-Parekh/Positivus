@@ -1,4 +1,4 @@
-import { ICompany, INavItem } from "@/types/main";
+import { ICompany, INavItem, IService } from "@/types/main";
 import AmazonIcon from "@/assets/AmazonIcon.png";
 import DribbleIcon from "@/assets/DribbleIcon.png";
 import HubspotIcon from "@/assets/HubspotIcon.png";
@@ -12,13 +12,6 @@ import ServiceThree from "@/assets/ServiceThree.png";
 import ServiceFour from "@/assets/ServiceFour.png";
 import ServiceFive from "@/assets/ServiceFive.png";
 import ServiceSix from "@/assets/ServiceSix.png";
-import { StaticImageData } from "next/image";
-
-interface IService {
-  title: string;
-  variants: "primary" | "secondary" | "tertiary";
-  image: StaticImageData;
-}
 
 export const services: IService[] = [
   {
@@ -27,7 +20,7 @@ export const services: IService[] = [
     image: ServiceOne,
   },
   {
-    title: "Pay-per-click#advertising",
+    title: "Pay-per-click#Advertising",
     variants: "primary",
     image: ServiceTwo,
   },
