@@ -63,6 +63,7 @@ export default function ServiceSection() {
         {services.map((service, index) => (
           <motion.div key={index} variants={childVariants}>
             <ServiceCard
+              key={service.title}
               title={service.title}
               variants={service.variants}
               image={service.image}
@@ -75,7 +76,7 @@ export default function ServiceSection() {
         initial="hidden"
         whileInView="visible"
         variants={containerVariants}
-        className="relative mt-20 flex items-center rounded-md bg-tertiary p-8 md:p-16 shadow-lg md:flex-row"
+        className="relative mt-20 flex items-center rounded-md bg-tertiary p-8 shadow-lg md:flex-row md:p-16"
       >
         <motion.div className="max-w-xl space-y-4">
           <h1 className="text-2 text-3xl font-semibold leading-tight tracking-tight">

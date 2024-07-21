@@ -1,6 +1,5 @@
 import { StaticImageData } from "next/image";
 
-
 export type variants = "primary" | "secondary" | "tertiary";
 
 export interface IService {
@@ -18,4 +17,10 @@ export interface INavItem {
 export interface ICompany {
   name: string;
   image: StaticImageData;
+}
+
+export interface IAccordionItem {
+  id: number;
+  title: string;
+  description: string;
 }

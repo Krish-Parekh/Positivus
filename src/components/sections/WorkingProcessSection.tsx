@@ -2,8 +2,10 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import TitleWrapper from "../ui/TitleWrapper";
-import Typography from "../Typography";
+import TitleWrapper from "@/components/ui/TitleWrapper";
+import Typography from "@/components/Typography";
+import Accordian from "@/components/ui/Accordian";
+import { accordianItems } from "@/constants/data";
 
 const containerVariants: Variants = {
   hidden: {
@@ -47,7 +49,14 @@ export default function WorkingProcessSection() {
           Step-by-Step Guide to Achieving Your Business Goals
         </motion.span>
       </motion.div>
-      
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
+        <Accordian items={accordianItems} />
+      </motion.div>
     </section>
   );
 }
