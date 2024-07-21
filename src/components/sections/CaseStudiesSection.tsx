@@ -60,7 +60,7 @@ export default function CaseStudiesSection() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="grid rounded-md bg-secondary p-16 md:grid-cols-3"
+        className="grid rounded-md shadow-xl bg-secondary p-16 md:grid-cols-3"
       >
         {caseStudies.map((study, index) => (
           <motion.li
